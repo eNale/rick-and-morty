@@ -36,7 +36,3 @@ export const getSingleCharacter = (id: number) => {
         }
     });
 };
-
-/**
- * // TODO: Add api call to get list of all episodes
- */

@@ -13,7 +13,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import thunk from 'redux-thunk';
 
 // Reducer imports
-import { CharactersReducer } from './reducers/index';
+import { CharactersReducer, EpisodesReducer } from './reducers/index';
 
 /**
  * Generate persistence configurations
@@ -29,12 +29,19 @@ const persistConfig = (key, whitelist) => ({
 
 const RootReducer = combineReducers({
     characters: persistReducer(
-    persistConfig(
-        'characters',
-        ['charactersList', 'character']
+        persistConfig(
+            'characters',
+            ['charactersList', 'character']
+        ),
+        CharactersReducer
     ),
-    CharactersReducer
-)
+    episodes: persistReducer(
+        persistConfig(
+            'episodes',
+            ['episodesList']
+        ),
+        EpisodesReducer
+    )
 });
 
 const composeEnhancers =

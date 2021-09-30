@@ -1,0 +1,11 @@
+{
+    "flow.pathToFlow": "${workspaceRoot}/node_modules/.bin/flow",
+    "flow.stopFlowOnExit": true,
+    "flow.useNPMPackagedFlow": true,
+    "javascript.validate.enable": false,
+    "editor.tabSize": 4,
+    "editor.formatOnPaste": false,
+    "editor.detectIndentation": false,
+    "files.autoSave": "onFocusChange",
+    "files.autoSaveDelay": 1000,
+}

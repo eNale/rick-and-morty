@@ -27,9 +27,9 @@ export const getAllCharacters = params => {
                 dispatch({
                     type: ActionTypes.CHARACTERS_LIST_SUCCESS,
                     append: page != null && page > 1,
-                    results: response.data
+                    results: response.data.results
                 });
-                return response;
+                return response.data.results;
             })
             .catch(error => {
                 dispatch({

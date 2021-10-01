@@ -14,8 +14,6 @@ export const getAllEpisodes = (filters: Object = {}) => {
 
     return axios.request({
         method: 'get',
-        // Hardcoded base url because there is a missing '/'
-        // before 'api' from the url that endpoint
         url: `${API_BASE_URL}/episode${buildQueryString(query)}`,
         headers: {
             'Content-Type': 'application/json'

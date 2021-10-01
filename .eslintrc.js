@@ -3,14 +3,14 @@ module.exports = {
     plugins: ['react'],
     parser: '@babel/eslint-parser',
     parserOptions: {
-		sourceType: 'module',
-		ecmaFeatures: {
-			jsx: true
-		}
-	},
+        sourceType: 'module',
+        ecmaFeatures: {
+            jsx: true
+        }
+    },
     settings: {
         react: {
-          version: 'detect',
+            version: 'detect',
         }
     },
     env: {
@@ -42,11 +42,16 @@ module.exports = {
         'eol-last': 1,
         'no-trailing-spaces': 1,
         'comma-dangle': 0,
+        'no-mixed-spaces-and-tabs': 1,
+        'indent': [
+            2,
+            4
+        ],
         'no-undef': 2,
         'react/jsx-no-undef': 1,
         'no-undef-init': 1,
         'no-undefined': 0,
-		'react/react-in-jsx-scope': 1,
-		'react/jsx-uses-vars': 1,
+        'react/react-in-jsx-scope': 1,
+        'react/jsx-uses-vars': 1,
     }
 };

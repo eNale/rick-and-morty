@@ -16,7 +16,7 @@ const eventHandlers = {
     [ActionTypes.CHARACTERS_LIST_SUCCESS]: (state, action) => ({
         ...state,
         fetchingCharacters: false,
-        charactersList: action.results
+        charactersList: action.append === false ? action.results : [...state.charactersList, ...action.results]
     }),
 
     [ActionTypes.CHARACTERS_LIST_FAILED]: (state, action) => ({

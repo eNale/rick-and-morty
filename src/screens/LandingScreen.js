@@ -137,6 +137,9 @@ const LandingScreen = () => {
                                 title={'Load more'}
                                 color={colors.white}/>
                         }
+                        // Ucomment below lines for infinite scrolling instead of load more
+                        // onEndReached={() => setPage(page + 1)}
+                        // onEndReachedThreshold={0.8}
                     />
                     : <ActivityIndicator animating={true} style={Styles.indicator} />
                 }

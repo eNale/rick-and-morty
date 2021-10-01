@@ -11,7 +11,8 @@ import {
     View,
     ImageBackground,
     ActivityIndicator,
-    RefreshControl
+    RefreshControl,
+    Platform
 } from 'react-native';
 import { CardItem } from '../components/index';
 
@@ -135,7 +136,7 @@ const LandingScreen = () => {
                             <Button
                                 onPress={() => setPage(page + 1)}
                                 title={'Load more'}
-                                color={colors.white}/>
+                                color={Platform.OS ==='ios' ? colors.white : 'transparent'}/>
                         }
                         // Ucomment below lines for infinite scrolling instead of load more
                         // onEndReached={() => setPage(page + 1)}

@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { API_BASE_URL, /* PAGE_SIZE */ } from './constants';
+import { API_BASE_URL } from './constants';
 import { buildQueryString } from './utils';
 
 /**
@@ -9,7 +9,6 @@ import { buildQueryString } from './utils';
  */
 export const getAllCharacters = (filters: Object = {}) => {
     const query = {
-        // page_size: PAGE_SIZE,
         ...filters
     };
 

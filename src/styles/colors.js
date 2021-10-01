@@ -6,6 +6,7 @@ const colors = {
     less_white: '#F5F5F5',
     green: '#54CC44',
     red: '#D63D2E',
+    app_title: '#212328'
 };
 
 export default colors;

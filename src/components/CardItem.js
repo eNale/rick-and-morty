@@ -39,7 +39,7 @@ const CardItem = ({ item, firstSeenIn, onCardItemPress }) => {
                         <Text style={Styles.statusText}>{`${item.status} - ${item.species}`}</Text>
                     </View>
                     <Text style={Styles.label}>Last known location:</Text>
-                    <Text style={Styles.info}>{item.origin.name}</Text>
+                    <Text style={Styles.info}>{item.location?.name}</Text>
                     <Text style={Styles.label}>First seen in:</Text>
                     <Text style={Styles.info}>{firstSeenIn}</Text>
                 </View>
@@ -49,7 +49,15 @@ const CardItem = ({ item, firstSeenIn, onCardItemPress }) => {
 };
 
 CardItem.propTypes = {
-    item: PropTypes.object, // TODO shape the object
+    item: PropTypes.shape({
+        status: PropTypes.string,
+        image: PropTypes.string,
+        name: PropTypes.string,
+        species: PropTypes.string,
+        location: PropTypes.shape({
+            name: PropTypes.string
+        })
+    }),
     firstSeenIn: PropTypes.string,
     onCardItemPress: PropTypes.func
 };

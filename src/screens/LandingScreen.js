@@ -10,7 +10,8 @@ import {
     Text,
     View,
     ImageBackground,
-    ActivityIndicator
+    ActivityIndicator,
+    RefreshControl
 } from 'react-native';
 import { CardItem } from '../components/index';
 
@@ -45,6 +46,7 @@ const LandingScreen = () => {
     const getAllCharacters = filters => dispatch(CharactersActions.getAllCharacters(filters));
     const getAllEpisodes = filters => dispatch(EpisodesActions.getAllEpisodes(filters));
 
+    const [isRefreshing, setIsRefreshing] = useState(false);
     const [page, setPage] = useState(1);
 
     // Fetch first page of characters and all episodes on mount
@@ -98,6 +100,13 @@ const LandingScreen = () => {
         );
     };
 
+    const handleRefresh = () => {
+        setIsRefreshing(true);
+        getAllCharacters({ page: 1 })
+            .then(setIsRefreshing(false))
+            .catch(err => console.log(NETWORK_REQUEST_FAILED, err));
+    };
+
     return (
         <>
             <SafeAreaView style={Styles.safeAreaTop} />
@@ -112,7 +121,11 @@ const LandingScreen = () => {
                 </View>
                 {(!fetchingCharacters && page === 1) || page > 1
                     ? <FlatList
-                        // refreshControl={}
+                        refreshControl={
+                            <RefreshControl
+                                refreshing={isRefreshing}
+                                onRefresh={handleRefresh}
+                                tintColor={colors.light_gray} />}
                         contentContainerStyle={Styles.list}
                         data={charactersList}
                         keyExtractor={item => item.id.toString()}

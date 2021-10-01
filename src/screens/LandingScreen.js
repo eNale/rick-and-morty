@@ -1,10 +1,3 @@
-/**
- * Rick and Morty App
- * https://github.com/eNale/rick-and-morty
- *
- * @format
- */
-
 // Base imports
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';

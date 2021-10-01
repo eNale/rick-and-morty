@@ -6,7 +6,8 @@ import {
     SafeAreaView,
     Text,
     View,
-    Image
+    Image,
+    ScrollView
 } from 'react-native';
 
 // Styles
@@ -48,22 +49,24 @@ const CharacterDetailsScreen = () => {
 
     return (
         <SafeAreaView style={Styles.safeAreaView}>
-            <Image
-                style={Styles.image}
-                resizeMode={'contain'}
-                source={imageSrc}
-            />
-            <View style={Styles.infoContainer}>
-                <Text style={Styles.name}>{name}</Text>
-                <Text style={Styles.label}>Species</Text>
-                <Text style={Styles.info}>{species}</Text>
-                <Text style={Styles.label}>Type</Text>
-                <Text style={Styles.info}>{type}</Text>
-                <Text style={Styles.label}>Gender:</Text>
-                <Text style={Styles.info}>{gender}</Text>
-                <Text style={Styles.label}>Place of Origin:</Text>
-                <Text style={Styles.info}>{origin?.name}</Text>
-            </View>
+            <ScrollView contentContainerStyle={Styles.scrollView}>
+                <Image
+                    style={Styles.image}
+                    resizeMode={'contain'}
+                    source={imageSrc}
+                />
+                <View style={Styles.infoContainer}>
+                    <Text style={Styles.name}>{name}</Text>
+                    <Text style={Styles.label}>Species</Text>
+                    <Text style={Styles.info}>{species}</Text>
+                    <Text style={Styles.label}>Type</Text>
+                    <Text style={Styles.info}>{type}</Text>
+                    <Text style={Styles.label}>Gender:</Text>
+                    <Text style={Styles.info}>{gender}</Text>
+                    <Text style={Styles.label}>Place of Origin:</Text>
+                    <Text style={Styles.info}>{origin?.name}</Text>
+                </View>
+            </ScrollView>
         </SafeAreaView>
     );
 };

@@ -4,13 +4,17 @@ import {
     colors,
     SPACE_SMALL,
     SPACE_X_SMALL,
-    SPACE_XX_SMALL
+    SPACE_XX_SMALL,
+    SPACE_XX_LARGE
 } from '../styles/index';
 
 export default StyleSheet.create({
     safeAreaView: {
         flex: 1,
         backgroundColor: colors.background
+    },
+    scrollView: {
+        paddingBottom: SPACE_XX_LARGE
     },
     image: {
         aspectRatio: 1,

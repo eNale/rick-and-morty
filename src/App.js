@@ -1,83 +1,50 @@
 /**
  * Rick and Morty App
- * TODO: repo url here
+ * https://github.com/eNale/rick-and-morty
  *
  * @format
  */
 
-import React, { useState, useEffect } from 'react';
-import type { Node } from 'react';
-import PropTypes from 'prop-types';
+// Base imports
+import * as React from 'react';
+import { connect } from 'react-redux';
 
-// UI Components
-import {
-    SafeAreaView,
-    useColorScheme,
-    View,
-    FlatList,
-    Text
-} from 'react-native';
+// Navigation
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+
+// Screens
+import * as Screens from './screens/index';
 
 // Styles
-import {
-    Colors
-} from 'react-native/Libraries/NewAppScreen';
+import { colors, fonts } from './styles/index';
 
-// Store
-import * as CharactersActions from './store/actions/characters';
-import { useSelector, useDispatch } from 'react-redux';
+const Stack = createNativeStackNavigator();
 
-const App: () => Node = () => {
-
-    const isDarkMode = useColorScheme() === 'dark';
-
-    const backgroundStyle = {
-        backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
-    };
-
-    const charactersList = useSelector(state => state.characters.charactersList);
-    // const singleCharacter = useSelector(state => state.characters.character);
-    const dispatch = useDispatch();
-    const getAllCharacters = filters => dispatch(CharactersActions.getAllCharacters(filters));
-    // const getSingleCharacter = id => dispatch(CharactersActions.getSingleCharacter(id));
-
-    const [charactersListState, setCharactersList] = useState([]);
-
-    useEffect(() => {
-        getAllCharacters({ page: 2 })
-            .then(response => {
-                setCharactersList(response.data.results);
-                console.warn('response.data.results', response.data.results);
-                console.warn('charactersListState', charactersListState);
-            })
-            .catch(err => console.log('Something went wrong'));
-    }, []);
-
-    const _onRenderItem = ({ item }) => {
-        return (
-            <View>
-                <Text>{item.name}</Text>
-            </View>
-        );
-    };
-
-    _onRenderItem.propTypes = {
-        item: PropTypes.object
-    };
-
+function App() {
     return (
-        <SafeAreaView style={backgroundStyle}>
-            <FlatList
-                // refreshControl={}
-                contentContainerStyle={{paddingHorizontal: 8}}
-                data={charactersListState || charactersList.results}
-                keyExtractor={item => item.id.toString()}
-                renderItem={_onRenderItem}
-                // ListEmptyComponent={}
-                // ListFooterComponent={}
-            />
-        </SafeAreaView>
+        <NavigationContainer>
+            <Stack.Navigator initialRouteName='LandingScreen'>
+                <Stack.Screen
+                    name='LandingScreen'
+                    component={Screens.LandingScreen}
+                    options={{ headerShown: false }}/>
+                <Stack.Screen
+                    name='CharacterDetailsScreen'
+                    component={Screens.CharaterDetailsScreen}
+                    options={{
+                        title: 'Details',
+                        headerBackTitleVisible: false,
+                        headerTintColor: colors.app_title,
+                        headerTitleStyle: {
+                            fontSize: fonts.size.large,
+                            fontFamily: fonts.Roboto.Bold,
+                            color: colors.app_title,
+                        }
+                    }}/>
+            </Stack.Navigator>
+        </NavigationContainer>
     );
-};
+}
 
-export default App;
+export default connect(null, null)(App);

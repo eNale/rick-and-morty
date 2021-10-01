@@ -4,7 +4,7 @@
  * @param {Object} params The params to encode and add to the url.
  * @returns
  */
- export const encodeUrlParams = (params: Object) => {
+export const encodeUrlParams = (params: Object) => {
     return Object.keys(params)
         .map(key => {
             if (Array.isArray(params[key])) {
@@ -23,7 +23,7 @@
  * @param {Object} queryParams
  * @returns
  */
- export const buildQueryString = (queryParams: Object) => {
+export const buildQueryString = (queryParams: Object) => {
     const query = queryParams != null ? { ...queryParams } : {};
 
     let queryString = encodeUrlParams(query);

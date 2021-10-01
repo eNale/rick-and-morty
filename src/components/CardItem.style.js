@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native';
-import { fonts, colors, SPACE_X_SMALL, SPACE_SMALL, SPACE_XX_SMALL, SPACE_LARGE } from '../styles/index';
+import { fonts, colors, SPACE_SMALL, SPACE_XX_SMALL } from '../styles/index';
 
 export default StyleSheet.create({
     container: {
